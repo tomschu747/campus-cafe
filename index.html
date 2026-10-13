@@ -1,0 +1,86 @@
+<!-- =======================================================
+Lab 4 - index.html starter
+Focus: HTML Content
+======================================================= -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Café | Quote Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="head panel">
+            <h1>Campus Café</h1>
+            <p class="muted">Quote Dashboard • JavaScript Fundamentals + 12-column CSS Grid</p>
+            <!-- TODO (HTML #1): Add a wide banner image & attribution here. -->
+            <img id="header-img" src=" " alt="Coffee on a table" />
+            <p class="muted">Attribution: Photo by John Doe on
+                <a href="https://unsplash.com/" target="_blank">Unsplash</a>
+                (replace with your own attribution).
+            </p>
+        </header>
+        <nav class="nav panel">
+            <h2>Sections</h2>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#quote">Get Quote</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+        <main class="content panel">
+            <section id="menu">
+                <h2>Menu</h2>
+                <p class="muted">Display cards only. Inputs are collected using
+                    dialogs.</p>
+                <div class="menu-flex">
+                    <!-- TODO (HTML #2):
+Add 3 <article> cards here:
+o Coffee ($3.25)
+o Sandwich ($8.50)
+o Salad ($7.25)
+Each section card must include:
+o Item name in a heading 3 element
+o A short description
+o Price with class attribute set to "price"
+-->
+                </div>
+            </section>
+            <section id="quote" style="margin-top:18px;">
+                <h2>Get a Quote</h2>
+                <p class="muted">Click Get Quote and enter values in dialogs.</p>
+                <div class="actions">
+                    <button id="calcBtn" type="button">Get Quote</button>
+                    <button id="resetBtn" type="button">Reset</button>
+                </div>
+            </section>
+            <!-- TODO (HTML #3):
+Add the About section here (2–4 sentences). Create with the appropriate ID to
+ensure the navigation link <a href="#about"> actually works
+-->
+        </main>
+        <aside class="sidebar panel">
+            <h3>Receipt</h3>
+            <pre id="receipt">No order data.</pre>
+        </aside>
+        <aside class="ads panel">
+            <h3>Local Weather</h3>
+            <!-- TODO (HTML #4):
+Add the weather display box here:
+- Create a div with class="weather" and id="weatherBox"
+- Set its starting text to: Loading weather...
+-->
+        </aside>
+        <footer class="footer panel">
+            <p>&copy; 2026 Campus Café</p>
+            <p class="muted">Weather data by Open-Meteo (CC BY 4.0).</p>
+        </footer>
+    </div>
+</body>
+
+</html>
