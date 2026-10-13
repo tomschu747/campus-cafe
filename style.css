@@ -7,8 +7,8 @@ Focus: CSS Grid & Nested Layouts
 - Choose a warm café theme
 */
 :root {
-    --bg: #4D413A;
-    --panel: #2E3838;
+    --bg: #2E3838;
+    --panel: #4D413A;
     --text: #FFDEC9;
     --muted: hwb(23 50% 0%);
     --border: #8C6247;
@@ -78,14 +78,16 @@ a {
 - You will then alter to horizontal stacking for different modes
 */
 .menu-flex {
-    /* add properties here */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 article {
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 12px;
-    background: #fff;
+    background: var(--bg);
 }
 
 .price {
@@ -160,7 +162,48 @@ each mode. Whatever works best for your design.
 - Receipt must not break
 */
 @media (min-width: 768px) {
-    /* add properties here */
+    .menu-flex {
+        flex-direction: column;
+    }
+
+    /* Header */
+    
+    .head {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    /* Column 1 */
+    
+    .content {
+        grid-column: 1 / 7;
+        grid-row: 3;
+    }
+
+    /* Column 2 */
+    .sidebar {
+        grid-column: 7 / 13;
+        grid-row: 3;
+    }
+
+    .ads {
+        grid-column: 1 / -1;
+        grid-row: 4;
+    }
+
+    /* Footer */
+
+    .footer {
+        grid-column: 1 / -1;
+        grid-row: 5;
+    }
+
+    
 }
 
 /* TODO (CSS #4): Laptop Mode
@@ -170,7 +213,45 @@ each mode. Whatever works best for your design.
 - Cannot be exactly the same as tablet mode. At least 1 grid item property must be different
 */
 @media (min-width: 992px) {
-    /* add properties here */
+    .menu-flex {
+        flex-direction: row;
+    }
+
+    /* Header */
+
+    .head {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    /* Column 1 */
+    .content {
+        grid-column: 1 / 8;
+        grid-row: 3 / 5;
+    }
+
+    /* Column 2 */
+    .sidebar {
+        grid-column: 8 / 13;
+        grid-row: 3 / 5;
+    }
+
+    .ads {
+        grid-column: 1 / -1;
+        grid-row: 5;
+    }
+
+    /* Footer */
+
+    .footer {
+        grid-column: 1 / -1;
+        grid-row: 6;
+    }
 }
 
 /* TODO (CSS #5): Desktop Mode
@@ -179,5 +260,44 @@ each mode. Whatever works best for your design.
 - Receipt must not break
 */
 @media (min-width: 1200px) {
-    /* add properties here */
+    .menu-flex {
+        flex-direction: row;
+    }
+
+    /* Header */
+
+    .head {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    /* Column 1 */
+    .nav {
+        grid-column: 1 / 4;
+        grid-row: 2;
+    }
+
+    .ads {
+        grid-column: 1 / 4;
+        grid-row: 3;
+    }
+
+    /* Column 2 */
+    .content {
+        grid-column: 4 / 10;
+        grid-row: 2 / 4;
+    }
+
+    /* Column 3 */
+    .sidebar {
+        grid-column: 10 / 13;
+        grid-row: 2 / 4;
+    }
+
+    /* Footer */
+
+    .footer {
+        grid-column: 1 / -1;
+        grid-row: 4;
+    }
 }
