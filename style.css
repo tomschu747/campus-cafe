@@ -7,12 +7,12 @@ Focus: CSS Grid & Nested Layouts
 - Choose a warm café theme
 */
 :root {
-    --bg: ;
-    --panel: ;
-    --text: ;
-    --muted: ;
-    --border: ;
-    --accent: ;
+    --bg: #4D413A;
+    --panel: #2E3838;
+    --text: #FFDEC9;
+    --muted: hwb(23 50% 0%);
+    --border: #8C6247;
+    --accent: #488B8C;
     --radius: 16px;
 }
 
