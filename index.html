@@ -50,16 +50,41 @@ Focus: HTML Content
                         Display cards only. Inputs are collected using dialogs.
                     </p>
                     <div class="menu-flex">
-                        <!-- TODO (HTML #2):
-Add 3 <article> cards here:
-o Coffee ($3.25)
-o Sandwich ($8.50)
-o Salad ($7.25)
-Each section card must include:
-o Item name in a heading 3 element
-o A short description
-o Price with class attribute set to "price"
--->
+                        <!-- 
+                            TODO (HTML #2):
+                            Add 3 <article> cards here:
+                            o Coffee ($3.25)
+                            o Sandwich ($8.50)
+                            o Salad ($7.25)
+                            Each section card must include:
+                            o Item name in a heading 3 element
+                            o A short description
+                            o Price with class attribute set to "price"
+                        -->
+                        <article>
+                            <h3>Coffee</h3>
+                            <p class="price">$3.25</p>
+                            <p>
+                                Freshly brewed hot drip coffee made from
+                                medium-roast beans.
+                            </p>
+                        </article>
+                        <article>
+                            <h3>Sandwich</h3>
+                            <p class="price">$8.50</p>
+                            <p>
+                                Toasted deli sandwich layered with sliced
+                                turkey, cheddar, crisp lettuce, and mayo.
+                            </p>
+                        </article>
+                        <article>
+                            <h3>Salad</h3>
+                            <p class="price">$7.25</p>
+                            <p>
+                                Mixed garden greens tossed with cherry tomatoes,
+                                cucumbers, and a house vinaigrette.
+                            </p>
+                        </article>
                     </div>
                 </section>
                 <section id="quote" style="margin-top: 18px">
@@ -72,10 +97,18 @@ o Price with class attribute set to "price"
                         <button id="resetBtn" type="button">Reset</button>
                     </div>
                 </section>
-                <!-- TODO (HTML #3):
-Add the About section here (2–4 sentences). Create with the appropriate ID to
-ensure the navigation link <a href="#about"> actually works
--->
+                <!-- 
+                    TODO (HTML #3):
+                    Add the About section here (2–4 sentences). Create with the appropriate ID to
+                    ensure the navigation link <a href="#about"> actually works
+                -->
+                <section id="about">
+                    <p>
+                        Located near the cafeteria, this café is a cozy retreat where students gather 
+                        between classes to recharge with quick bites, fresh coffee, and plenty of natural light. 
+                        If you need a place to study or a spot to catch up with friends, drop by!
+                    </p>
+                </section>
             </main>
             <aside class="sidebar panel">
                 <h3>Receipt</h3>
@@ -83,11 +116,15 @@ ensure the navigation link <a href="#about"> actually works
             </aside>
             <aside class="ads panel">
                 <h3>Local Weather</h3>
-                <!-- TODO (HTML #4):
-Add the weather display box here:
-- Create a div with class="weather" and id="weatherBox"
-- Set its starting text to: Loading weather...
--->
+                <!-- 
+                    TODO (HTML #4):
+                    Add the weather display box here:
+                    - Create a div with class="weather" and id="weatherBox"
+                    - Set its starting text to: Loading weather...
+                -->
+                <div class="weather" id="weatherBox">
+                    <p>Loading weather...</p>
+                </div>
             </aside>
             <footer class="footer panel">
                 <p>&copy; 2026 Campus Café</p>
