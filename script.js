@@ -8,6 +8,7 @@ const STUDENT_RATE = 0.10;
 const ECO_FEE = 1.00;
 const BULK_QTY = 6;
 const BULK_OFF = 2.00;
+
 function money(n) {
     return `$${n.toFixed(2)}`;
 }
@@ -17,30 +18,42 @@ function money(n) {
 - if raw is null, it should return an empty string to avoid errors on .trim()
 */
 function normalizeType(raw) {
-    /* Add JS code here */
+    if (raw === null) {
+        return ""
+    }
+    return raw.trim().toLowerCase();
 }
+
 /* TODO (JS #2):
 - return true only for "coffee", "sandwich", "salad"
 */
 function isValidType(t) {
-    /* Add JS code here */
+    if (t in PRICES) {
+        return true
+    } else {
+        return false
+    }
 }
+
 /* TODO (JS #3):
 - use a for loop to repeat an icon up to 10 times
 - append the icons into the icons variable
 - should add a line break and an indentation after every 3 icons
 */
 function iconsFor(type, qty) {
-    const map = { coffee: " ", sandwich: " ", salad: " " };
+    const map = { coffee: "\u{2615}", sandwich: "\u{1F96A}", salad: "\u{1F957}" };
     const icon = map[type] || " ";
     const cap = Math.min(qty, 10);
     let icons = "";
-    // for (...) {
-    // ...
-    // icons += icon;
-    // }
+    for (i = 1; i <= cap; i++) {
+        icons += icon;
+        if (i % 3 === 0 && i < cap) {
+            icons += "\n  ";
+        }
+    }
     return icons;
 }
+
 /* TODO (JS #4):
 - Implement full math rules
 - unitPrice line is provided
@@ -48,14 +61,31 @@ function iconsFor(type, qty) {
 function processQuote(type, qty, isStudent, reusableCup) {
     const unitPrice = PRICES[type];
     // subtotal = unit price × quantity
+    const subtotal = unitPrice * qty;
     // studentDiscount = 10% (STUDENT_RATE) of subtotal if isStudent
+    var studentDiscount = 0;
+    if (isStudent) {
+        studentDiscount = STUDENT_RATE * subtotal;
+    }
     // ecoFee = ECO_FEE only if type is coffee AND reusableCup is false
+    var ecoFee = 0;
+    if (type === "coffee" && reusableCup === false) {
+        ecoFee = ECO_FEE;
+    }
     // bulkDiscount = BULK_OFF only if qty >= BULK_QTY
-    // taxableAmount = subtotal - studentDiscount + ecoFee - bulkDiscount
+    var bulkDiscount = 0;
+    if (qty >= BULK_QTY) {
+        bulkDiscount = BULK_OFF;
+    }
+    // taxableAmount = subtotal - studentDiscount + ecoFee - bulkDiscount'
+    const taxableAmount = subtotal - studentDiscount + ecoFee - bulkDiscount;
     // tax = 5% (TAX_RATE) of taxableAmount
+    const tax = TAX_RATE * taxableAmount;
     // total = taxableAmount + tax
+    const total = taxableAmount + tax;
     return { unitPrice, subtotal, studentDiscount, ecoFee, bulkDiscount, tax, total };
 };
+
 function buildReceipt(type, qty, isStudent, reusableCup, calc) {
     const icons = iconsFor(type, qty);
     const studentText = isStudent ? "Yes" : "No";
@@ -76,17 +106,18 @@ Tax (5%): ${money(calc.tax)}
 ------------------------
 TOTAL: ${money(calc.total)}`;
 }
+
 /* TODO (JS #5):
 - Show a clear error in #receipt
 */
 function showError(msg) {
-    /* Add JS code here */
+    document.getElementById("receipt").textContent = `Error: ${msg}`;
 }
 /* TODO (JS #6):
 - Reset #receipt to "No order data."
 */
 function resetUI() {
-    /* Add JS code here */
+    document.getElementById("receipt").textContent = "No order data.";
 }
 async function loadWeather() {
     const box = document.getElementById("weatherBox");
@@ -121,10 +152,16 @@ function main() {
         - must be between 1 and 10
         - if invalid: showError(...) and stop
         */
+        if (!Number.isInteger(qty) || qty < 1 || qty > 10) {
+            showError("Quantity must be an integer between 1 and 10.");
+            return;
+        }
+
         /* TODO (JS #8):
         - Add a confirm() dialog here to ask for student discounts
         - Store the result in a variable named isStudent
         */
+        const isStudent = confirm("Are you a student?")
         const reusableCup = (type === "coffee") ?
             confirm("Brought reusable cup(s)? (+$1.00 otherwise)") : true;
         const calc = processQuote(type, qty, isStudent, reusableCup);
