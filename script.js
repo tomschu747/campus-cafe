@@ -63,20 +63,11 @@ function processQuote(type, qty, isStudent, reusableCup) {
     // subtotal = unit price × quantity
     const subtotal = unitPrice * qty;
     // studentDiscount = 10% (STUDENT_RATE) of subtotal if isStudent
-    let studentDiscount = 0;
-    if (isStudent) {
-        studentDiscount = STUDENT_RATE * subtotal;
-    }
+    const studentDiscount = isStudent ? STUDENT_RATE * subtotal : 0;
     // ecoFee = ECO_FEE only if type is coffee AND reusableCup is false
-    let ecoFee = 0;
-    if (type === "coffee" && reusableCup === false) {
-        ecoFee = ECO_FEE;
-    }
+    const ecoFee = (type === "coffee" && !reusableCup) ? ECO_FEE : 0;
     // bulkDiscount = BULK_OFF only if qty >= BULK_QTY
-    let bulkDiscount = 0;
-    if (qty >= BULK_QTY) {
-        bulkDiscount = BULK_OFF;
-    }
+    const bulkDiscount = (qty >= BULK_QTY) ? BULK_OFF : 0;
     // taxableAmount = subtotal - studentDiscount + ecoFee - bulkDiscount'
     const taxableAmount = subtotal - studentDiscount + ecoFee - bulkDiscount;
     // tax = 5% (TAX_RATE) of taxableAmount
