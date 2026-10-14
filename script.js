@@ -45,7 +45,7 @@ function iconsFor(type, qty) {
     const icon = map[type] || " ";
     const cap = Math.min(qty, 10);
     let icons = "";
-    for (i = 1; i <= cap; i++) {
+    for (let i = 1; i <= cap; i++) {
         icons += icon;
         if (i % 3 === 0 && i < cap) {
             icons += "\n  ";
@@ -63,17 +63,17 @@ function processQuote(type, qty, isStudent, reusableCup) {
     // subtotal = unit price × quantity
     const subtotal = unitPrice * qty;
     // studentDiscount = 10% (STUDENT_RATE) of subtotal if isStudent
-    var studentDiscount = 0;
+    let studentDiscount = 0;
     if (isStudent) {
         studentDiscount = STUDENT_RATE * subtotal;
     }
     // ecoFee = ECO_FEE only if type is coffee AND reusableCup is false
-    var ecoFee = 0;
+    let ecoFee = 0;
     if (type === "coffee" && reusableCup === false) {
         ecoFee = ECO_FEE;
     }
     // bulkDiscount = BULK_OFF only if qty >= BULK_QTY
-    var bulkDiscount = 0;
+    let bulkDiscount = 0;
     if (qty >= BULK_QTY) {
         bulkDiscount = BULK_OFF;
     }
